@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KisanBazaar – Marketplace for Farmers</title>
+  <meta name="description" content="Buy, sell and rent farm produce, livestock, and agricultural equipment directly from farmers in your area." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="logo-icon">🌾</span>
+        <span class="logo-text">KisanBazaar</span>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#listings">Browse</a>
+        <a href="#categories">Categories</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#contact-section">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-outline" id="loginBtn">Login</button>
+        <button class="btn-primary" id="postListingBtn">+ Post Listing</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🇮🇳 India's Farmers Marketplace</div>
+      <h1 class="hero-title">From <span class="accent">Farm</span> to Your Doorstep</h1>
+      <p class="hero-subtitle">Buy fresh produce, livestock & fertilizers • Rent tractors & tools • Connect directly with farmers</p>
+
+      <div class="search-bar" id="searchBar">
+        <div class="search-select-wrap">
+          <select id="categorySelect" class="search-select">
+            <option value="">All Categories</option>
+            <option value="produce">🥬 Produce</option>
+            <option value="livestock">🐄 Livestock</option>
+            <option value="fertilizer">♻️ Fertilizers</option>
+            <option value="equipment">🚜 Equipment</option>
+          </select>
+        </div>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search for tomatoes, cows, tractors..." />
+        <button class="search-btn" id="searchBtn">Search</button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">12,400+</span><span class="stat-label">Active Listings</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">8,200+</span><span class="stat-label">Verified Farmers</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">320+</span><span class="stat-label">Districts Covered</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORY TABS ===== -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <h2 class="section-title">Browse by Category</h2>
+      <p class="section-sub">Find exactly what you're looking for</p>
+      <div class="cat-grid">
+        <div class="cat-card active-cat" data-cat="all" onclick="filterListings('all', this)">
+          <div class="cat-icon">🛒</div>
+          <div class="cat-name">All Listings</div>
+          <div class="cat-count">48 items</div>
+        </div>
+        <div class="cat-card" data-cat="produce" onclick="filterListings('produce', this)">
+          <div class="cat-icon">🥬</div>
+          <div class="cat-name">Farm Produce</div>
+          <div class="cat-count">18 items</div>
+        </div>
+        <div class="cat-card" data-cat="livestock" onclick="filterListings('livestock', this)">
+          <div class="cat-icon">🐄</div>
+          <div class="cat-name">Livestock</div>
+          <div class="cat-count">9 items</div>
+        </div>
+        <div class="cat-card" data-cat="fertilizer" onclick="filterListings('fertilizer', this)">
+          <div class="cat-icon">♻️</div>
+          <div class="cat-name">Fertilizers & Dung</div>
+          <div class="cat-count">7 items</div>
+        </div>
+        <div class="cat-card" data-cat="equipment" onclick="filterListings('equipment', this)">
+          <div class="cat-icon">🚜</div>
+          <div class="cat-name">Tools & Equipment</div>
+          <div class="cat-count">14 items</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LISTINGS ===== -->
+  <section class="listings-section" id="listings">
+    <div class="container">
+      <div class="listings-header">
+        <h2 class="section-title">Latest Listings <span id="listingCount" class="count-badge">48</span></h2>
+        <div class="sort-wrap">
+          <label for="sortSelect">Sort by:</label>
+          <select id="sortSelect" onchange="sortListings(this.value)">
+            <option value="newest">Newest First</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+      <div class="listings-grid" id="listingsGrid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-sub">Simple steps to buy, sell or rent</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">📝</div>
+          <h3>Post Your Listing</h3>
+          <p>Farmers and sellers create a free listing with photos, price, and contact details in minutes.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">🔍</div>
+          <h3>Browse & Discover</h3>
+          <p>Buyers search and filter listings by category, location, and price to find exactly what they need.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">📞</div>
+          <h3>Contact Seller</h3>
+          <p>Click "Contact Seller" to get the farmer's phone number or send them a direct message.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-icon">🤝</div>
+          <h3>Deal Done!</h3>
+          <p>Negotiate, meet, and complete your transaction directly – no middlemen, no fees.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / CTA ===== -->
+  <section class="cta-section" id="contact-section">
+    <div class="container cta-inner">
+      <div class="cta-text">
+        <h2>Are you a farmer? <span class="accent">Start Selling Today</span></h2>
+        <p>List your produce, livestock, or equipment for free and reach thousands of buyers in your district.</p>
+      </div>
+      <button class="btn-primary btn-large" id="ctaPostBtn">Post a Free Listing →</button>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">🌾</span>
+        <span class="logo-text">KisanBazaar</span>
+        <p>Empowering Indian farmers with direct market access.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Marketplace</h4>
+          <a href="#">Browse Listings</a>
+          <a href="#">Post Listing</a>
+          <a href="#">Rent Equipment</a>
+        </div>
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <a href="#">Farm Produce</a>
+          <a href="#">Livestock</a>
+          <a href="#">Fertilizers</a>
+          <a href="#">Tools & Equipment</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Report Issue</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 KisanBazaar. Made with ❤️ for Indian farmers.</p>
+    </div>
+  </footer>
+
+  <!-- ===== MODALS ===== -->
+
+  <!-- Contact Modal -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('contactModal')">✕</button>
+      <div class="modal-icon">📞</div>
+      <h3 id="contactModalTitle">Contact Seller</h3>
+      <p id="contactModalSeller" class="modal-seller"></p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-label">📱 Phone</span>
+          <span class="contact-value" id="contactPhone">+91 98765 43210</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">📍 Location</span>
+          <span class="contact-value" id="contactLocation">Nashik, Maharashtra</span>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <a id="whatsappBtn" href="#" class="btn-whatsapp" target="_blank">💬 WhatsApp</a>
+        <a id="callBtn" href="#" class="btn-call" target="_blank">📞 Call Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Listing Modal -->
+  <div class="modal-overlay" id="postModal">
+    <div class="modal modal-large">
+      <button class="modal-close" onclick="closeModal('postModal')">✕</button>
+      <h3>Post a New Listing</h3>
+      <p class="modal-subtitle">Reach thousands of buyers for free</p>
+      <form class="post-form" onsubmit="submitListing(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" placeholder="e.g. Ramesh Patil" required />
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Category *</label>
+            <select required>
+              <option value="">Select category</option>
+              <option>🥬 Farm Produce</option>
+              <option>🐄 Livestock</option>
+              <option>♻️ Fertilizers & Dung</option>
+              <option>🚜 Tools & Equipment (Rent)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Location *</label>
+            <input type="text" placeholder="e.g. Nashik, Maharashtra" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Listing Title *</label>
+          <input type="text" placeholder="e.g. Fresh Organic Tomatoes – 500kg available" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Price (₹) *</label>
+            <input type="number" placeholder="e.g. 2000" required />
+          </div>
+          <div class="form-group">
+            <label>Unit</label>
+            <select>
+              <option>per kg</option>
+              <option>per quintal</option>
+              <option>per piece</option>
+              <option>per day (rent)</option>
+              <option>fixed price</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea rows="3" placeholder="Describe your product, quantity available, quality etc."></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-full">🌾 Post Listing</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
+      <div class="modal-icon">👨‍🌾</div>
+      <h3>Login to KisanBazaar</h3>
+      <p class="modal-subtitle">Your farm marketplace account</p>
+      <form class="post-form" onsubmit="event.preventDefault(); closeModal('loginModal')">
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" placeholder="Enter your password" />
+        </div>
+        <button type="submit" class="btn-primary btn-full">Login</button>
+        <p style="text-align:center;margin-top:12px;color:var(--text-muted);font-size:0.85rem;">New here? <a href="#" style="color:var(--green)" onclick="closeModal('loginModal'); openModal('postModal')">Create a free account →</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
