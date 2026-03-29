@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KisanBazaar – Marketplace for Farmers</title>
-  <meta name="description" content="Buy, sell and rent farm produce, livestock, and agricultural equipment directly from farmers in your area." />
+  <title>KisanBazaar – Farmers List. Buyers Find. No Middlemen.</title>
+  <meta name="description" content="India's direct farm marketplace. Farmers list produce, livestock, equipment & more. Buyers and industries purchase directly — no agents, no middlemen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
@@ -17,16 +17,17 @@
       <div class="nav-logo">
         <span class="logo-icon">🌾</span>
         <span class="logo-text">KisanBazaar</span>
+        <span class="logo-tag">DIRECT</span>
       </div>
       <nav class="nav-links" id="navLinks">
-        <a href="#listings">Browse</a>
+        <a href="#listings">Browse Listings</a>
         <a href="#categories">Categories</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#contact-section">Contact</a>
+        <a href="#for-who">How It Works</a>
+        <a href="#contact-section">Sell Your Produce</a>
       </nav>
-      <div class="nav-actions">
-        <button class="btn-outline" id="loginBtn">Login</button>
-        <button class="btn-primary" id="postListingBtn">+ Post Listing</button>
+      <div class="nav-actions" id="navActions">
+        <button class="btn-buyer" id="loginBtn">🛒 I'm a Buyer</button>
+        <button class="btn-primary" id="postListingBtn">🌾 List as Farmer</button>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
     </div>
@@ -36,30 +37,107 @@
   <section class="hero" id="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-badge">🇮🇳 India's Farmers Marketplace</div>
-      <h1 class="hero-title">From <span class="accent">Farm</span> to Your Doorstep</h1>
-      <p class="hero-subtitle">Buy fresh produce, livestock & fertilizers • Rent tractors & tools • Connect directly with farmers</p>
+      <div class="hero-badge">🇮🇳 India's #1 Farm-to-Buyer Marketplace</div>
 
-      <div class="search-bar" id="searchBar">
-        <div class="search-select-wrap">
-          <select id="categorySelect" class="search-select">
-            <option value="">All Categories</option>
-            <option value="produce">🥬 Produce</option>
-            <option value="livestock">🐄 Livestock</option>
-            <option value="fertilizer">♻️ Fertilizers</option>
-            <option value="equipment">🚜 Equipment</option>
-          </select>
-        </div>
-        <input type="text" id="searchInput" class="search-input" placeholder="Search for tomatoes, cows, tractors..." />
+      <h1 class="hero-title">
+        Farmers List.<br/>
+        <span class="accent">Buyers Find.</span><br/>
+        <span class="no-middle">No Middlemen.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Every product goes <strong>straight from the farm</strong> to you — whether you're an individual, a restaurant, or an industry. No agents. No commission. No price markup.
+      </p>
+
+      <div class="hero-cta-row">
+        <button class="hero-btn-farmer" id="heroPostBtn">
+          <span class="hbtn-icon">🌾</span>
+          <span>
+            <strong>I'm a Farmer</strong>
+            <small>List & sell your products</small>
+          </span>
+        </button>
+        <div class="hero-or">or</div>
+        <button class="hero-btn-buyer" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">
+          <span class="hbtn-icon">🛒</span>
+          <span>
+            <strong>I'm a Buyer / Industry</strong>
+            <small>Browse & buy direct from farms</small>
+          </span>
+        </button>
+      </div>
+
+      <div class="hero-search" id="searchBar">
+        <select id="categorySelect" class="search-select">
+          <option value="">All Categories</option>
+          <option value="produce">🥬 Produce</option>
+          <option value="dairy">🥛 Dairy</option>
+          <option value="livestock">🐄 Livestock</option>
+          <option value="fertilizer">♻️ Fertilizers</option>
+          <option value="seeds">🌱 Seeds & Saplings</option>
+          <option value="equipment">🚜 Equipment</option>
+        </select>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search tomatoes, cows, tractor rental, wheat..." />
         <button class="search-btn" id="searchBtn">Search</button>
       </div>
 
       <div class="hero-stats">
-        <div class="stat"><span class="stat-num">12,400+</span><span class="stat-label">Active Listings</span></div>
+        <div class="stat"><span class="stat-num">14,800+</span><span class="stat-label">Active Listings</span></div>
         <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">8,200+</span><span class="stat-label">Verified Farmers</span></div>
+        <div class="stat"><span class="stat-num">9,600+</span><span class="stat-label">Farmers Selling</span></div>
         <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">320+</span><span class="stat-label">Districts Covered</span></div>
+        <div class="stat"><span class="stat-num">2,100+</span><span class="stat-label">Industries Buying</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">0%</span><span class="stat-label">Commission</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOR FARMERS / FOR BUYERS SPLIT ===== -->
+  <section class="for-who" id="for-who">
+    <div class="container">
+      <div class="for-who-grid">
+
+        <!-- FARMER SIDE -->
+        <div class="for-card farmer-card">
+          <div class="for-card-header">
+            <span class="for-icon">👨‍🌾</span>
+            <div>
+              <h2>For Farmers</h2>
+              <p>List anything from your farm — for free</p>
+            </div>
+          </div>
+          <ul class="for-list">
+            <li>✅ Post listings in under 2 minutes</li>
+            <li>✅ List produce, livestock, land, tools, dairy — anything</li>
+            <li>✅ Set your own price — no commission charged</li>
+            <li>✅ Buyers contact you directly via WhatsApp or call</li>
+            <li>✅ Reach individuals, restaurants AND industries</li>
+            <li>✅ Offer bulk quantities or small lots</li>
+          </ul>
+          <button class="btn-primary btn-full" onclick="openModal('postModal')">🌾 Start Listing for Free</button>
+        </div>
+
+        <!-- BUYER SIDE -->
+        <div class="for-card buyer-card">
+          <div class="for-card-header">
+            <span class="for-icon">🏭</span>
+            <div>
+              <h2>For Buyers & Industries</h2>
+              <p>Source directly from farmers at farm prices</p>
+            </div>
+          </div>
+          <ul class="for-list">
+            <li>✅ Browse thousands of farm listings</li>
+            <li>✅ Filter by category, location, price & quantity</li>
+            <li>✅ Contact farmers directly — no agent involved</li>
+            <li>✅ Negotiate and deal at farm-gate prices</li>
+            <li>✅ Bulk purchasing for restaurants, factories, exporters</li>
+            <li>✅ Verified farmer profiles with location & phone</li>
+          </ul>
+          <button class="btn-buyer btn-full" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">🛒 Browse All Listings</button>
+        </div>
+
       </div>
     </div>
   </section>
@@ -67,18 +145,25 @@
   <!-- ===== CATEGORY TABS ===== -->
   <section class="categories" id="categories">
     <div class="container">
-      <h2 class="section-title">Browse by Category</h2>
-      <p class="section-sub">Find exactly what you're looking for</p>
+      <div class="section-header">
+        <h2 class="section-title">What Farmers Are Selling</h2>
+        <p class="section-sub">Click a category to filter listings</p>
+      </div>
       <div class="cat-grid">
         <div class="cat-card active-cat" data-cat="all" onclick="filterListings('all', this)">
           <div class="cat-icon">🛒</div>
           <div class="cat-name">All Listings</div>
-          <div class="cat-count">48 items</div>
+          <div class="cat-count">56 items</div>
         </div>
         <div class="cat-card" data-cat="produce" onclick="filterListings('produce', this)">
           <div class="cat-icon">🥬</div>
-          <div class="cat-name">Farm Produce</div>
+          <div class="cat-name">Produce</div>
           <div class="cat-count">18 items</div>
+        </div>
+        <div class="cat-card" data-cat="dairy" onclick="filterListings('dairy', this)">
+          <div class="cat-icon">🥛</div>
+          <div class="cat-name">Dairy</div>
+          <div class="cat-count">6 items</div>
         </div>
         <div class="cat-card" data-cat="livestock" onclick="filterListings('livestock', this)">
           <div class="cat-icon">🐄</div>
@@ -87,13 +172,18 @@
         </div>
         <div class="cat-card" data-cat="fertilizer" onclick="filterListings('fertilizer', this)">
           <div class="cat-icon">♻️</div>
-          <div class="cat-name">Fertilizers & Dung</div>
+          <div class="cat-name">Fertilizers</div>
           <div class="cat-count">7 items</div>
+        </div>
+        <div class="cat-card" data-cat="seeds" onclick="filterListings('seeds', this)">
+          <div class="cat-icon">🌱</div>
+          <div class="cat-name">Seeds & Saplings</div>
+          <div class="cat-count">6 items</div>
         </div>
         <div class="cat-card" data-cat="equipment" onclick="filterListings('equipment', this)">
           <div class="cat-icon">🚜</div>
-          <div class="cat-name">Tools & Equipment</div>
-          <div class="cat-count">14 items</div>
+          <div class="cat-name">Equipment</div>
+          <div class="cat-count">10 items</div>
         </div>
       </div>
     </div>
@@ -103,9 +193,16 @@
   <section class="listings-section" id="listings">
     <div class="container">
       <div class="listings-header">
-        <h2 class="section-title">Latest Listings <span id="listingCount" class="count-badge">48</span></h2>
-        <div class="sort-wrap">
-          <label for="sortSelect">Sort by:</label>
+        <div>
+          <h2 class="section-title">Farm Listings <span id="listingCount" class="count-badge">56</span></h2>
+          <p class="section-sub" style="margin-bottom:0">All products listed directly by farmers</p>
+        </div>
+        <div class="listings-controls">
+          <div class="toggle-tabs" id="buyerTypeFilter">
+            <button class="toggle-tab active" onclick="filterBuyerType('all', this)">All</button>
+            <button class="toggle-tab" onclick="filterBuyerType('bulk', this)">📦 Bulk / Industry</button>
+            <button class="toggle-tab" onclick="filterBuyerType('retail', this)">🧺 Retail / Individual</button>
+          </div>
           <select id="sortSelect" onchange="sortListings(this.value)">
             <option value="newest">Newest First</option>
             <option value="price-asc">Price: Low to High</option>
@@ -122,45 +219,69 @@
   <!-- ===== HOW IT WORKS ===== -->
   <section class="how-it-works" id="how-it-works">
     <div class="container">
-      <h2 class="section-title">How It Works</h2>
-      <p class="section-sub">Simple steps to buy, sell or rent</p>
+      <h2 class="section-title">How KisanBazaar Works</h2>
+      <p class="section-sub">Simple. Direct. Free.</p>
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-num">01</div>
-          <div class="step-icon">📝</div>
-          <h3>Post Your Listing</h3>
-          <p>Farmers and sellers create a free listing with photos, price, and contact details in minutes.</p>
+          <div class="step-icon">🌾</div>
+          <h3>Farmer Lists</h3>
+          <p>A farmer posts anything — vegetables, milk, cows, dung, tractor rental — with photos, quantity and price. Takes 2 minutes. Free forever.</p>
         </div>
         <div class="step-card">
           <div class="step-num">02</div>
           <div class="step-icon">🔍</div>
-          <h3>Browse & Discover</h3>
-          <p>Buyers search and filter listings by category, location, and price to find exactly what they need.</p>
+          <h3>Buyer Discovers</h3>
+          <p>Individuals, restaurants, factories and exporters browse listings by category, location and quantity needed — no sign-up required.</p>
         </div>
         <div class="step-card">
           <div class="step-num">03</div>
           <div class="step-icon">📞</div>
-          <h3>Contact Seller</h3>
-          <p>Click "Contact Seller" to get the farmer's phone number or send them a direct message.</p>
+          <h3>Direct Contact</h3>
+          <p>Buyer calls or WhatsApps the farmer directly from the listing. No agent in the middle. Price is negotiated farm-gate.</p>
         </div>
         <div class="step-card">
           <div class="step-num">04</div>
           <div class="step-icon">🤝</div>
-          <h3>Deal Done!</h3>
-          <p>Negotiate, meet, and complete your transaction directly – no middlemen, no fees.</p>
+          <h3>Deal Done</h3>
+          <p>Money goes straight to the farmer. Buyer gets fresh produce at real prices. Zero commission. Zero platform fee.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTACT / CTA ===== -->
+  <!-- ===== WHO BUYS CTA ===== -->
+  <section class="buyers-strip">
+    <div class="container">
+      <p class="buyers-label">Who buys on KisanBazaar?</p>
+      <div class="buyers-row">
+        <div class="buyer-chip">🏠 Households</div>
+        <div class="buyer-chip">🍽️ Restaurants</div>
+        <div class="buyer-chip">🏭 Food Industries</div>
+        <div class="buyer-chip">📦 Wholesale Traders</div>
+        <div class="buyer-chip">✈️ Exporters</div>
+        <div class="buyer-chip">🏥 Hospitals & Canteens</div>
+        <div class="buyer-chip">🛒 Supermarkets</div>
+        <div class="buyer-chip">🌿 Organic Brands</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FARMER CTA ===== -->
   <section class="cta-section" id="contact-section">
     <div class="container cta-inner">
       <div class="cta-text">
-        <h2>Are you a farmer? <span class="accent">Start Selling Today</span></h2>
-        <p>List your produce, livestock, or equipment for free and reach thousands of buyers in your district.</p>
+        <div class="cta-badge">👨‍🌾 For Farmers</div>
+        <h2>Have something to sell? <span class="accent">List it in 2 minutes.</span></h2>
+        <p>Reach individual buyers, restaurants and industries directly. No middlemen taking a cut of your earnings.</p>
+        <div class="cta-promise-row">
+          <span>✅ 100% Free</span>
+          <span>✅ No Commission</span>
+          <span>✅ Direct Buyers</span>
+          <span>✅ WhatsApp Inquiries</span>
+        </div>
       </div>
-      <button class="btn-primary btn-large" id="ctaPostBtn">Post a Free Listing →</button>
+      <button class="btn-primary btn-large" id="ctaPostBtn">🌾 Post a Free Listing →</button>
     </div>
   </section>
 
@@ -168,23 +289,32 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="logo-icon">🌾</span>
-        <span class="logo-text">KisanBazaar</span>
-        <p>Empowering Indian farmers with direct market access.</p>
+        <div class="nav-logo" style="margin-bottom:12px">
+          <span class="logo-icon">🌾</span>
+          <span class="logo-text">KisanBazaar</span>
+          <span class="logo-tag">DIRECT</span>
+        </div>
+        <p>India's direct farm-to-buyer marketplace. No agents. No commission. No markup.</p>
       </div>
       <div class="footer-links">
         <div class="footer-col">
-          <h4>Marketplace</h4>
-          <a href="#">Browse Listings</a>
-          <a href="#">Post Listing</a>
-          <a href="#">Rent Equipment</a>
+          <h4>For Farmers</h4>
+          <a href="#" onclick="openModal('postModal')">Post a Listing</a>
+          <a href="#how-it-works">How to Sell</a>
+          <a href="#categories">Categories</a>
+        </div>
+        <div class="footer-col">
+          <h4>For Buyers</h4>
+          <a href="#listings">Browse Listings</a>
+          <a href="#categories">Farm Produce</a>
+          <a href="#categories">Bulk Orders</a>
         </div>
         <div class="footer-col">
           <h4>Categories</h4>
-          <a href="#">Farm Produce</a>
-          <a href="#">Livestock</a>
+          <a href="#">Produce & Grains</a>
+          <a href="#">Dairy & Livestock</a>
           <a href="#">Fertilizers</a>
-          <a href="#">Tools & Equipment</a>
+          <a href="#">Seeds & Equipment</a>
         </div>
         <div class="footer-col">
           <h4>Support</h4>
@@ -195,42 +325,50 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 KisanBazaar. Made with ❤️ for Indian farmers.</p>
+      <p>© 2026 KisanBazaar. Made with ❤️ for Indian farmers. <span style="opacity:0.5">|</span> Farmers sell. Buyers win. No middlemen.</p>
     </div>
   </footer>
 
-  <!-- ===== MODALS ===== -->
-
-  <!-- Contact Modal -->
+  <!-- ===== CONTACT MODAL ===== -->
   <div class="modal-overlay" id="contactModal">
     <div class="modal">
       <button class="modal-close" onclick="closeModal('contactModal')">✕</button>
-      <div class="modal-icon">📞</div>
-      <h3 id="contactModalTitle">Contact Seller</h3>
+      <div class="modal-icon">👨‍🌾</div>
+      <h3 id="contactModalTitle"></h3>
       <p id="contactModalSeller" class="modal-seller"></p>
+      <div class="direct-badge">⚡ Contact directly — no agent, no commission</div>
       <div class="contact-info">
         <div class="contact-item">
           <span class="contact-label">📱 Phone</span>
-          <span class="contact-value" id="contactPhone">+91 98765 43210</span>
+          <span class="contact-value" id="contactPhone"></span>
         </div>
         <div class="contact-item">
           <span class="contact-label">📍 Location</span>
-          <span class="contact-value" id="contactLocation">Nashik, Maharashtra</span>
+          <span class="contact-value" id="contactLocation"></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">📦 Available</span>
+          <span class="contact-value" id="contactQty"></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">🏷️ Price</span>
+          <span class="contact-value" id="contactPrice"></span>
         </div>
       </div>
       <div class="modal-actions">
-        <a id="whatsappBtn" href="#" class="btn-whatsapp" target="_blank">💬 WhatsApp</a>
+        <a id="whatsappBtn" href="#" class="btn-whatsapp" target="_blank">💬 WhatsApp Farmer</a>
         <a id="callBtn" href="#" class="btn-call" target="_blank">📞 Call Now</a>
       </div>
     </div>
   </div>
 
-  <!-- Post Listing Modal -->
+  <!-- ===== POST LISTING MODAL ===== -->
   <div class="modal-overlay" id="postModal">
     <div class="modal modal-large">
       <button class="modal-close" onclick="closeModal('postModal')">✕</button>
-      <h3>Post a New Listing</h3>
-      <p class="modal-subtitle">Reach thousands of buyers for free</p>
+      <div class="modal-icon">🌾</div>
+      <h3>List Your Farm Product</h3>
+      <p class="modal-subtitle">Free listing • Buyers contact you directly • No commission</p>
       <form class="post-form" onsubmit="submitListing(event)">
         <div class="form-row">
           <div class="form-group">
@@ -238,7 +376,7 @@
             <input type="text" placeholder="e.g. Ramesh Patil" required />
           </div>
           <div class="form-group">
-            <label>Phone Number *</label>
+            <label>Phone / WhatsApp *</label>
             <input type="tel" placeholder="+91 XXXXX XXXXX" required />
           </div>
         </div>
@@ -246,25 +384,46 @@
           <div class="form-group">
             <label>Category *</label>
             <select required>
-              <option value="">Select category</option>
-              <option>🥬 Farm Produce</option>
+              <option value="">Select what you're selling</option>
+              <option>🥬 Vegetables</option>
+              <option>🌾 Grains & Pulses</option>
+              <option>🥛 Dairy Products</option>
               <option>🐄 Livestock</option>
-              <option>♻️ Fertilizers & Dung</option>
+              <option>♻️ Fertilizers & Cow Dung</option>
+              <option>🌱 Seeds & Saplings</option>
+              <option>🚜 Tools & Equipment (Sell)</option>
               <option>🚜 Tools & Equipment (Rent)</option>
+              <option>🍎 Fruits</option>
+              <option>🌿 Herbs & Spices</option>
+              <option>🌀 Other Farm Products</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Location *</label>
+            <label>Your Location *</label>
             <input type="text" placeholder="e.g. Nashik, Maharashtra" required />
           </div>
         </div>
         <div class="form-group">
           <label>Listing Title *</label>
-          <input type="text" placeholder="e.g. Fresh Organic Tomatoes – 500kg available" required />
+          <input type="text" placeholder="e.g. Fresh Organic Tomatoes – 500kg ready to sell" required />
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Price (₹) *</label>
+            <label>Quantity Available *</label>
+            <input type="text" placeholder="e.g. 500 kg, 10 quintals, 3 cows" required />
+          </div>
+          <div class="form-group">
+            <label>Suitable For</label>
+            <select>
+              <option value="both">Both – Retail & Bulk</option>
+              <option value="retail">Retail / Individual</option>
+              <option value="bulk">Bulk / Industry / Restaurant</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Price (₹) *</label>
             <input type="number" placeholder="e.g. 2000" required />
           </div>
           <div class="form-group">
@@ -272,28 +431,31 @@
             <select>
               <option>per kg</option>
               <option>per quintal</option>
+              <option>per litre</option>
               <option>per piece</option>
+              <option>per tonne</option>
               <option>per day (rent)</option>
               <option>fixed price</option>
             </select>
           </div>
         </div>
         <div class="form-group">
-          <label>Description</label>
-          <textarea rows="3" placeholder="Describe your product, quantity available, quality etc."></textarea>
+          <label>Description (optional)</label>
+          <textarea rows="3" placeholder="Describe your product — variety, quality, how it was grown, any certifications..."></textarea>
         </div>
-        <button type="submit" class="btn-primary btn-full">🌾 Post Listing</button>
+        <button type="submit" class="btn-primary btn-full">🌾 Post My Listing — It's Free</button>
+        <p class="form-note">Buyers will contact you directly on your phone. No agent. No fees. Ever.</p>
       </form>
     </div>
   </div>
 
-  <!-- Login Modal -->
+  <!-- ===== LOGIN MODAL ===== -->
   <div class="modal-overlay" id="loginModal">
     <div class="modal">
       <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
-      <div class="modal-icon">👨‍🌾</div>
-      <h3>Login to KisanBazaar</h3>
-      <p class="modal-subtitle">Your farm marketplace account</p>
+      <div class="modal-icon">🛒</div>
+      <h3>Login as Buyer</h3>
+      <p class="modal-subtitle">Browse and contact farmers directly</p>
       <form class="post-form" onsubmit="event.preventDefault(); closeModal('loginModal')">
         <div class="form-group">
           <label>Phone Number</label>
@@ -304,7 +466,9 @@
           <input type="password" placeholder="Enter your password" />
         </div>
         <button type="submit" class="btn-primary btn-full">Login</button>
-        <p style="text-align:center;margin-top:12px;color:var(--text-muted);font-size:0.85rem;">New here? <a href="#" style="color:var(--green)" onclick="closeModal('loginModal'); openModal('postModal')">Create a free account →</a></p>
+        <p style="text-align:center;margin-top:12px;color:var(--text-muted);font-size:0.85rem;">
+          Are you a farmer? <a href="#" style="color:var(--green)" onclick="closeModal('loginModal'); openModal('postModal')">List your products →</a>
+        </p>
       </form>
     </div>
   </div>
